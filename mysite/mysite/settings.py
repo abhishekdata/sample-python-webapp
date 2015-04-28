@@ -29,6 +29,9 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+# Celery Database Backend
+# python manage.py syncdb
+BROKER_URL = 'django://'
 
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -37,6 +40,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'kombu.transport.django', 
+    'djcelery', 
+    'demoapp',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -100,3 +106,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# celery -A mysite worker -l info
+# celery -A mysite flower
+
+# import djcelery
+# djcelery.setup_loader()
+# from demoapp.tasks import add
+# add.delay(2,2)
