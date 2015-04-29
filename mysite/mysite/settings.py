@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 # Celery Database Backend
 # python manage.py syncdb
-BROKER_URL = 'django://'
+BROKER_URL = 'redis://:test@127.0.0.1:6900/0'
 
 INSTALLED_APPS = (
     'django.contrib.admin',
